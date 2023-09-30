@@ -1,11 +1,10 @@
 package com.me.frankanne;
 
 import com.me.frankanne.anne.Anne;
-import com.me.frankanne.common.EventsPublisher;
-import org.springframework.boot.CommandLineRunner;
+import com.me.frankanne.frank.Frank;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class FrankanneApplication {
@@ -13,16 +12,8 @@ public class FrankanneApplication {
 	public static void main(String[] args) {
 		new SpringApplicationBuilder()
 			.parent(FrankanneApplication.class)
-			.child(Anne.class)
+			.child(Frank.class).web(WebApplicationType.SERVLET)
+			.sibling(Anne.class).web(WebApplicationType.NONE)
 			.run(args);
-	}
-
-	@Bean
-	public CommandLineRunner eventRun(EventsPublisher publisher)
-	{
-		return args -> {
-			SampleEvent event = new SampleEvent();
-			publisher.publish(event);
-		};
 	}
 }
