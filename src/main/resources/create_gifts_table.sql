@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS gifts (
+   gift_id UUID NOT NULL,
+   content VARCHAR(20) NOT NULL);
+
+CREATE SEQUENCE gifts_seq;

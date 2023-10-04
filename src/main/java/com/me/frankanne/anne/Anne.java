@@ -12,6 +12,6 @@ public class Anne {
     @EventListener
     public void listener(SampleEvent sampleEvent)
     {
-        System.out.println("Anne got an event with uuid: " + sampleEvent.getEventId());
+        System.out.println("Anne got a gift with uuid: " + sampleEvent.getGift().getGiftId());
     }
 }
