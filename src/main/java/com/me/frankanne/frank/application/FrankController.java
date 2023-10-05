@@ -1,6 +1,6 @@
 package com.me.frankanne.frank.application;
 
-import com.me.frankanne.SampleEvent;
+import com.me.frankanne.frank.domain.GiftCreatedEvent;
 import com.me.frankanne.common.EventsPublisher;
 import com.me.frankanne.frank.domain.Gift;
 import com.me.frankanne.frank.domain.GiftRepository;
@@ -26,7 +26,7 @@ public class FrankController {
         Gift gift = new Gift(UUID.randomUUID(), "To Anne");
         giftRepository.save(gift);
 
-        SampleEvent event = new SampleEvent(gift);
+        GiftCreatedEvent event = new GiftCreatedEvent(gift);
         publisher.publish(event);
 
         Gift foundGift = giftRepository.find(gift.getGiftId());
